@@ -1,6 +1,5 @@
 package com.study.spring;
 
-import com.study.spring.BeanFactory;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
