@@ -1,0 +1,36 @@
+package com.study.aop;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+/**
+ * @author Howe Hsiang
+ */
+public class LogInterceptor implements InvocationHandler {
+    /**
+     * target 被代理对象，可以通过参数传进来
+     */
+    private Object target ;
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public void setTarget(Object target) {
+        this.target = target;
+    }
+
+    //在执行被代理对象的方法前执行的方法，我门要切进去的逻辑
+    public void beforeMethod(Method m) {
+        System.out.println(m.getName()+"  begin ..........");
+    }
+
+
+    public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
+        //执行我门的逻辑
+        beforeMethod(m);
+        //调用被代理对象的方法
+        m.invoke(target, args);
+        return null;
+    }
+}
